@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/loicmurumba/happythoughts#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "twilio": "^3.37.1"
   }
 }
