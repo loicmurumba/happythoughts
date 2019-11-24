@@ -25,7 +25,6 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 const messaging_response = require('twilio').twiml.MessagingResponse;
 const client = require('twilio')(account_sid,auth_token);
