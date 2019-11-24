@@ -5,6 +5,7 @@ import { MuiPickersUtilsProvider, KeyboardTimePicker } from "@material-ui/picker
 import DateFnsUtils from "@date-io/date-fns";
 import "./App.css";
 import TimeSliders from "./TimeSliders";
+import CountSlider from "./CountSlider";
 
 function App() {
   const [selectedDate, setSelectedDate] = React.useState(Date.now());
@@ -70,7 +71,7 @@ function App() {
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link">
                 Home <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -86,6 +87,9 @@ function App() {
       <div className="App-body">
         <TimeSliders name="Morning Motivation" lid="slide1"/>
         <TimeSliders name="Sleep Reminders" lid="slide2" />
+        <CountSlider name="Occasional Memes" lid="count1" />
+    
+        
         <Button variant="contained" color="primary" onClick={onClick}>
           Submit
         </Button>

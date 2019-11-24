@@ -61,6 +61,7 @@ settingsRef.on('value', function(snapshot) {
     if (snap.type.includes("links")) {
         
     }
+
     if (snap.type.includes("text")) {
 
     }

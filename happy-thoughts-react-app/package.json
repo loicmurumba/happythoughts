@@ -11,6 +11,7 @@
     "firebase": "^7.5.0",
     "jquery": "^3.4.1",
     "react": "^16.8.4",
+    "react-counter-input": "^0.2.1",
     "react-dom": "^16.8.4",
     "react-scripts": "3.2.0",
     "typescript": "^3.7.2"
