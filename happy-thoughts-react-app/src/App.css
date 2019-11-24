@@ -17,8 +17,17 @@
 }
 
 .App-body {
+  padding-left: 24px;
+  padding-right: 12px;
   margin-left: 124px;
   margin-right: 124px;
+  background-color: white;
+}
+
+.App-background {
+  background-image: linear-gradient(rgb(203, 167, 240), rgb(102, 42, 161));
+  min-height: 100vh;
+  padding-top: 36px;
 }
 
 .header {
@@ -53,4 +62,9 @@
 .radio-buttons {
   margin-top: 16px;
   margin-left: 24px;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+  background-color: rgba(184, 122, 245, 0.815);
+  border-color: rgba(184, 122, 245, 0.815);
 }
