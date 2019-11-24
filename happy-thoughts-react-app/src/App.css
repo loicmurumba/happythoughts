@@ -68,3 +68,19 @@
   background-color: rgba(184, 122, 245, 0.815);
   border-color: rgba(184, 122, 245, 0.815);
 }
+
+
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+  border-color: rgba(184, 122, 245, 0.815) !important;
+}
+
+.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+  color: rgba(184, 122, 245, 0.815) !important;
+  background-color: rgba(184, 122, 245, 0.815) !important;
+  border-color: rgba(184, 122, 245, 0.815) !important;
+  
+}
+
+.custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: 0 0 0 0.2rem rgba(184, 122, 245, 0.36) !important;
+}
