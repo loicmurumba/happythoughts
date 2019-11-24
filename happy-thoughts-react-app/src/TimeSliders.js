@@ -9,7 +9,7 @@ function Picker(props) {
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <TimePicker
               margin="normal"
-              id="time-picker"
+              id={props.cid}
               label="Select a time"
               value={selectedDate}
               onChange={handleDateChange}
@@ -53,7 +53,7 @@ class TimeSliders extends React.Component {
           </div>
         </div>
       </div>
-      {this.state.isSelected && <Picker />}
+      {this.state.isSelected && <Picker cid={this.props.cid} />}
       </div>
     );
   }

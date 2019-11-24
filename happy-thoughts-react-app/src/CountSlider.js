@@ -56,9 +56,8 @@ class TimeSliders extends React.Component {
       </div>
       <div class="picker">
         {this.state.isSelected && <CounterInput 
-            min={0}
-            max={12}
-            onCountChange = {count => console.log(count)} />}
+            min={1}
+            max={20} />}
       </div>
       </div>
          );
