@@ -11,6 +11,22 @@ function App() {
 
   let morningUpdateState = false;
 
+  const [selectedDate, setSelectedDate] = React.useState(new Date("2014-08-18T21:11:54"));
+  const tokens = require("./tokens.json");
+  const firebaseConfig = {
+    apiKey: tokens.fbasekey,
+    authDomain: "happythoughts.firebaseapp.com",
+    databaseURL: "https://happythoughts.firebaseio.com",
+    projectId: "happythoughts",
+    storageBucket: "happythoughts.appspot.com",
+    messagingSenderId: "49951684871",
+    appId: "1:49951684871:web:6a775f7666dac586deeda2",
+    measurementId: "G-MED6KQVRYE"
+  };
+  var firebase = require("firebase/app");
+  firebase.initializeApp(firebaseConfig);
+  require("firebase/database");
+
   const handleDateChange = date => {
     setSelectedDate(date);
   };
@@ -22,6 +38,17 @@ function App() {
 
   const onClick = () => {
     console.log("submit");
+    firebase
+      .database()
+      .ref("/")
+      .set({
+        type: "name",
+        morning: "emailduple",
+        sleep: "imageUrl",
+        memes: "freq"
+      });
+
+    //send 2 firebase.
   };
 
   return (
