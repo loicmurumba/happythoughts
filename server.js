@@ -36,6 +36,10 @@ app.post('/sms',(req, res) => {
 
     let lowerCaseBody = req.body.Body.toLowerCase();
     console.log(req.body);
+    console.log("---")
+    console.log(req);
+    console.log("---")
+
     let wordInBody = (trigger) => {req.body.Body.includes(trigger)};
 
 	if (triggers.some(wordInBody)){ 
@@ -113,7 +117,6 @@ var settingsRef = firebase.database().ref('/');
 const timeCloseToNow = (time) => {
     var timeDate = new Date("11/24/2019 " + time);
     var nowDate = Date.now();
-    console.log("time diff: " + Math.abs((timeDate - nowDate) / 60 / 1000));
     return time && Math.abs((timeDate - nowDate) / 60 / 1000) < 5;
 
 }
