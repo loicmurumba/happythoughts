@@ -35,7 +35,8 @@ app.post('/sms',(req, res) => {
     let triggers = ["hi", "hey"]
 
     let lowerCaseBody = req.body.Body.toLowerCase();
-    let wordInBody = (trigger) => {lowerCaseBody.includes(trigger)};
+    console.log(req.body);
+    let wordInBody = (trigger) => {req.body.Body.includes(trigger)};
 
 	if (triggers.some(wordInBody)){ 
     twiml.message('Hey! :)\n\nText WOO for motivation\n\nText ZZZ for sleep\nText RLF for relief\nText HAHA for memes\n\nText INFO for more info\n\nThink Happy Thoughts :)');
