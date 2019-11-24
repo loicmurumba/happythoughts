@@ -52,3 +52,16 @@ function send_message(message) {
 };
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
+
+var settingsRef = firebase.database().ref('/');
+
+settingsRef.on('value', function(snapshot) {
+    var snap = snapshot.val();
+    var response = "";
+    if (snap.type.includes("links")) {
+        
+    }
+    if (snap.type.includes("text")) {
+
+    }
+});

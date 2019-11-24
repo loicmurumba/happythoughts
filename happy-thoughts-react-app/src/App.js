@@ -11,7 +11,6 @@ function App() {
 
   let morningUpdateState = false;
 
-  const [selectedDate, setSelectedDate] = React.useState(new Date("2014-08-18T21:11:54"));
   const tokens = require("./tokens.json");
   const firebaseConfig = {
     apiKey: tokens.fbasekey,
@@ -85,39 +84,8 @@ function App() {
         </div>
       </nav>
       <div className="App-body">
-        <div class="row">
-          <div class="col-md-10">
-            <p className="header">Morning Motivation</p>
-          </div>
-          <div class="col-md-2">
-            <div class="custom-control custom-switch">
-              <input
-                type="checkbox"
-                class="custom-control-input"
-                id="customSwitch1"
-                onChange={morningUpdate}
-              />
-              <label class="custom-control-label" for="customSwitch1" />
-            </div>
-          </div>
-        </div>
-        {morningUpdateState && (
-          <div class="picker">
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-              <KeyboardTimePicker
-                margin="normal"
-                id="time-picker"
-                label="Select a time"
-                value={selectedDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps={{
-                  "aria-label": "change time"
-                }}
-              />
-            </MuiPickersUtilsProvider>
-          </div>
-        )}
-        <TimeSliders />
+        <TimeSliders name="Morning Motivation" lid="slide1"/>
+        <TimeSliders name="Sleep Reminders" lid="slide2" />
         <Button variant="contained" color="primary" onClick={onClick}>
           Submit
         </Button>
