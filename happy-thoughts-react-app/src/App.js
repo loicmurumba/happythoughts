@@ -85,11 +85,34 @@ function App() {
         </div>
       </nav>
       <div className="App-body">
-        <TimeSliders name="Morning Motivation" lid="slide1"/>
+        <p className="header">Send Me</p>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="option1"
+          />
+          <label class="form-check-label" for="inlineRadio1">
+            Links
+          </label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio2"
+            value="option2"
+          />
+          <label class="form-check-label" for="inlineRadio2">
+            Text
+          </label>
+        </div>
+        <TimeSliders name="Morning Motivation" lid="slide1" />
         <TimeSliders name="Sleep Reminders" lid="slide2" />
         <CountSlider name="Occasional Memes" lid="count1" />
-    
-        
         <Button variant="contained" color="primary" onClick={onClick}>
           Submit
         </Button>
