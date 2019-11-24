@@ -4,11 +4,20 @@ import { Button } from "@material-ui/core";
 import { MuiPickersUtilsProvider, KeyboardTimePicker } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import "./App.css";
+import TimeSliders from "./TimeSliders";
 
 function App() {
-  const [selectedDate, setSelectedDate] = React.useState(new Date("2014-08-18T21:11:54"));
+  const [selectedDate, setSelectedDate] = React.useState(Date.now());
+
+  let morningUpdateState = false;
+
   const handleDateChange = date => {
     setSelectedDate(date);
+  };
+
+  const morningUpdate = () => {
+    console.log(document.getElementById("customSwitch1").checked);
+    morningUpdateState = document.getElementById("customSwitch1").checked;
   };
 
   const onClick = () => {
@@ -55,25 +64,33 @@ function App() {
           </div>
           <div class="col-md-2">
             <div class="custom-control custom-switch">
-              <input type="checkbox" class="custom-control-input" id="customSwitch1" onInput="" />
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="customSwitch1"
+                onChange={morningUpdate}
+              />
               <label class="custom-control-label" for="customSwitch1" />
             </div>
           </div>
         </div>
-        <div class="picker">
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <KeyboardTimePicker
-              margin="normal"
-              id="time-picker"
-              label="Select a time"
-              value={selectedDate}
-              onChange={handleDateChange}
-              KeyboardButtonProps={{
-                "aria-label": "change time"
-              }}
-            />
-          </MuiPickersUtilsProvider>
-        </div>
+        {morningUpdateState && (
+          <div class="picker">
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <KeyboardTimePicker
+                margin="normal"
+                id="time-picker"
+                label="Select a time"
+                value={selectedDate}
+                onChange={handleDateChange}
+                KeyboardButtonProps={{
+                  "aria-label": "change time"
+                }}
+              />
+            </MuiPickersUtilsProvider>
+          </div>
+        )}
+        <TimeSliders />
         <Button variant="contained" color="primary" onClick={onClick}>
           Submit
         </Button>
