@@ -1,9 +1,6 @@
 import React from "react";
 
 import { Button } from "@material-ui/core";
-import { MuiPickersUtilsProvider, KeyboardTimePicker } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
-
 import TimeSliders from "./TimeSliders";
 import CountSlider from "./CountSlider";
 
@@ -40,28 +37,34 @@ class Form extends React.Component {
 
     if (document.getElementById("slide1").checked) {
       let val = document.getElementById("time1").value;
-      val = val.substring(0, val.length - 3);
+      val = val.substring(0, val.length - 3) + ":00";
       console.log(val);
       ans.morning = val;
+    } else {
+        ans.morning = null;
     }
 
     if (document.getElementById("slide2").checked) {
       let val = document.getElementById("time2").value;
-      val = val.substring(0, val.length - 3);
+      val = val.substring(0, val.length - 3) + ":00";
       console.log(val);
       ans.sleep = val;
+    } else {
+        ans.sleep = null;
     }
 
     if (document.getElementById("count1").checked) {
       let list = document.getElementsByTagName("input");
       let el = null;
       for (let i = 0; i < list.length; ++i) {
-        if (list[i].type == "text") {
+        if (list[i].type === "text") {
           el = list[i];
         }
       }
       console.log(el.value);
       ans.fun = el.value;
+    } else {
+        ans.fun = null;
     }
 
     this.firebase

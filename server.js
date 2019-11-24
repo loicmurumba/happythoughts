@@ -32,10 +32,12 @@ const client = require('twilio')(account_sid,auth_token);
 app.post('/sms',(req, res) => {
 	lastMessage = req; 
     const twiml = new messaging_response();
-    let triggers = ["Hi", "Hey", "hi", "hey"]
-    let wordIn = (trigger) => {req.body.Body.includes(trigger)};
+    let triggers = ["hi", "hey"]
 
-	if (triggers.some(wordIn)){ 
+    let lowerCaseBody = req.body.Body.toLowerCase();
+    let wordInBody = (trigger) => {lowerCaseBody.includes(trigger)};
+
+	if (triggers.some(wordInBody)){ 
     twiml.message('Hey! :)\n\nText WOO for motivation\n\nText ZZZ for sleep\nText RLF for relief\nText HAHA for memes\n\nText INFO for more info\n\nThink Happy Thoughts :)');
 	} else if (req.body.Body.includes("WOO") || req.body.Body.includes("Woo") || req.body.Body.includes("woo")){
 		if (responseType == 0){
@@ -87,24 +89,55 @@ function send_message(message) {
 
 };
 
+function send_image(message, image) {
+    client.messages
+    .create({
+        body: message,
+        from: tokens.src_phone,
+        mediaUrl: [image],
+        to: tokens.dst_phone 
+    })
+    .then(message => console.log(message.sid));
+
+};
+
 app.listen(port, () => console.log(`App listening on port ${port}!`));
 
 var settingsRef = firebase.database().ref('/');
 
+const timeCloseToNow = (time) => {
+    var timeDate = new Date("11/24/2019 " + time);
+    var nowDate = Date.now();
+    console.log("time diff: " + Math.abs((timeDate - nowDate) / 60 / 1000));
+    return time && Math.abs((timeDate - nowDate) / 60 / 1000) < 5;
+
+}
 settingsRef.on('value', function(snapshot) {
-    console.log(snapshot)
     var snap = snapshot.val();
     var response = "";
     console.log(snap);
     if (snap.type.includes("links")) {
-        if (snap.sleep){
-		    //send_message('Slow down, breathe, and let go of the stressful day')
+        if (timeCloseToNow(snap.sleep)) {
+            // send_message("Here are some peacful vibes for you: https://www.youtube.com/watch?v=TP2gb2fSYXY")
         }
+        if (timeCloseToNow(snap.morning)) {
+            // send_message("GOOD MORNING!! :) \n"+
+            // "https://sayingimages.com/wp-content/uploads/aaaahhh-heeeellloooo-and-good-morning-cute-memes.jpg");
+        }
+        if (snap.fun) {
+            send_image("Burrito Baby", "https://i.imgur.com/5XthY5m.jpg");
+        } 
     }
 
     if (snap.type.includes("text")) {
-        if (snap.sleep){
-            //send_message("Here's some meditation for you: https://www.youtube.com/watch?v=TP2gb2fSYXY")
-        }		
+        if (timeCloseToNow(snap.sleep)) {
+		    // send_message('Slow down, breathe, and let go of the stressful day')        
+        }
+        if (timeCloseToNow(snap.morning)) {
+            // send_message("We May Encounter Many Defeats But We Must Not Be Defeated");
+        } 
+        if (snap.fun) {
+            // send_message("Why can't your nose be 12 inches long? Because then it would be a foot!");
+        }
 	}
 });

@@ -37,7 +37,7 @@ class CountSlider extends React.Component {
             {this.state.isSelected && (
               <div class="row">
                 <div class="counter">
-                  <CounterInput min={1} max={12} />
+                  <CounterInput count={2} min={1} max={12} />
                 </div>
                 <div class="counter-label">memes per day</div>
               </div>
