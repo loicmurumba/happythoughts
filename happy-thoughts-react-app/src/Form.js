@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 import { Button } from "@material-ui/core";
 import { MuiPickersUtilsProvider, KeyboardTimePicker } from "@material-ui/pickers";
@@ -22,13 +22,10 @@ class Form extends React.Component {
       appId: "1:49951684871:web:6a775f7666dac586deeda2",
       measurementId: "G-MED6KQVRYE"
     };
-  
+
     this.firebase = require("firebase/app");
     this.firebase.initializeApp(firebaseConfig);
     require("firebase/database");
-
-
-
   }
 
   handleSubmit(event) {
@@ -36,47 +33,53 @@ class Form extends React.Component {
 
     // Links
     if (document.getElementById("inlineRadio1").checked) {
-        ans.type = "links";
+      ans.type = "links";
     } else {
-        ans.type = "text";
+      ans.type = "text";
     }
 
     if (document.getElementById("slide1").checked) {
-        let val = document.getElementById("time1").value;
-        val = val.substring(0,val.length - 3);
-        console.log(val)        
-        ans.morning = val;
+      let val = document.getElementById("time1").value;
+      val = val.substring(0, val.length - 3);
+      console.log(val);
+      ans.morning = val;
     }
 
     if (document.getElementById("slide2").checked) {
-        let val = document.getElementById("time2").value;
-        val = val.substring(0,val.length - 3);
-        console.log(val)
-        ans.sleep = val;
-
+      let val = document.getElementById("time2").value;
+      val = val.substring(0, val.length - 3);
+      console.log(val);
+      ans.sleep = val;
     }
 
     if (document.getElementById("count1").checked) {
-        let list = document.getElementsByTagName("input");
-        let el = null;
-        for (let i = 0; i < list.length; ++i) {
-            if (list[i].type == "text") {
-                el = list[i];
-            }
+      let list = document.getElementsByTagName("input");
+      let el = null;
+      for (let i = 0; i < list.length; ++i) {
+        if (list[i].type == "text") {
+          el = list[i];
         }
-        console.log(el.value);
-        ans.fun = el.value;
+      }
+      console.log(el.value);
+      ans.fun = el.value;
     }
 
-    this.firebase.database().ref("/")
-    .set(ans);    
+    this.firebase
+      .database()
+      .ref("/")
+      .set(ans);
     console.log(ans);
   }
 
   render() {
     return (
-    <div>
-      <p className="header">Send Me</p>
+      <div>
+        <div class="row">
+          <div class="col-md-10">
+            <p className="header">Send Me</p>
+          </div>
+        </div>
+        <div className="radio-buttons">
           <div class="form-check form-check-inline">
             <input
               class="form-check-input"
@@ -102,13 +105,16 @@ class Form extends React.Component {
               Text
             </label>
           </div>
-          <TimeSliders name="Morning Motivation" lid="slide1" cid="time1"/>
-          <TimeSliders name="Sleep Reminders" lid="slide2" cid="time2" />
-          <CountSlider name="Occasional Memes" lid="count1" cid="countId1" />
+        </div>
+        <TimeSliders name="Morning Motivation" lid="slide1" cid="time1" />
+        <TimeSliders name="Sleep Reminders" lid="slide2" cid="time2" />
+        <CountSlider name="Occasional Memes" lid="count1" cid="countId1" />
+        <div className="submit">
           <Button type="submit" variant="contained" color="primary" onClick={this.handleSubmit}>
-            Save
+            Save Settings
           </Button>
-          </div>
+        </div>
+      </div>
     );
   }
 }
