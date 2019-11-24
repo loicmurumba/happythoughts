@@ -118,11 +118,11 @@ settingsRef.on('value', function(snapshot) {
     console.log(snap);
     if (snap.type.includes("links")) {
         if (timeCloseToNow(snap.sleep)) {
-            // send_message("Here are some peacful vibes for you: https://www.youtube.com/watch?v=TP2gb2fSYXY")
+            send_message("Here are some peacful vibes for you: https://www.youtube.com/watch?v=TP2gb2fSYXY")
         }
         if (timeCloseToNow(snap.morning)) {
-            // send_message("GOOD MORNING!! :) \n"+
-            // "https://sayingimages.com/wp-content/uploads/aaaahhh-heeeellloooo-and-good-morning-cute-memes.jpg");
+            send_message("GOOD MORNING!! :) \n"+
+            "https://sayingimages.com/wp-content/uploads/aaaahhh-heeeellloooo-and-good-morning-cute-memes.jpg");
         }
         if (snap.fun) {
             send_image("Burrito Baby", "https://i.imgur.com/5XthY5m.jpg");
@@ -131,13 +131,13 @@ settingsRef.on('value', function(snapshot) {
 
     if (snap.type.includes("text")) {
         if (timeCloseToNow(snap.sleep)) {
-		    // send_message('Slow down, breathe, and let go of the stressful day')        
+		    send_message('Slow down, breathe, and let go of the stressful day')        
         }
         if (timeCloseToNow(snap.morning)) {
-            // send_message("We May Encounter Many Defeats But We Must Not Be Defeated");
+            send_message("We May Encounter Many Defeats But We Must Not Be Defeated");
         } 
         if (snap.fun) {
-            // send_message("Why can't your nose be 12 inches long? Because then it would be a foot!");
+            send_message("Why can't your nose be 12 inches long? Because then it would be a foot!");
         }
 	}
 });
