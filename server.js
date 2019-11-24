@@ -34,11 +34,12 @@ app.post('/sms',(req, res) => {
     const twiml = new messaging_response();
     let triggers = ["hi", "hey"]
 
-    let lowerCaseBody = req.body.Body.toLowerCase();
     console.log(req.body);
     console.log("---")
     console.log(req);
     console.log("---")
+
+    let lowerCaseBody = req.body.Body.toLowerCase();
 
     let wordInBody = (trigger) => {req.body.Body.includes(trigger)};
 
