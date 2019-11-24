@@ -23,6 +23,7 @@
   "homepage": "https://github.com/loicmurumba/happythoughts#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "firebase": "^7.5.0",
     "twilio": "^3.37.1"
   }
 }
