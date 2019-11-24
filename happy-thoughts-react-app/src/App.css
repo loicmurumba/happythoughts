@@ -3,20 +3,20 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 24px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.navbar {
+  min-height: 64px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
-.App-link {
-  color: #09d3ac;
+.navbar-nav > li {
+  padding-left: 24px;
+}
+
+.App-body {
+  margin-left: 125px;
+  margin-right: 125px;
 }
