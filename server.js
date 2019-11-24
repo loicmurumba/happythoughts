@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 8080; 
 
 const TOKEN_PATH = "./tokens.json";
-var responseType = 0; //0 text only
+var responseType = 1; //0 text only
 
 var tokens = require(TOKEN_PATH);
 const account_sid = tokens.sid;
@@ -58,12 +58,16 @@ app.post('/sms',(req, res) => {
 		} else{
 			twiml.message("Right now clouds are covering the sky and everything seems dark and overcast. It is only a matter of time before the sun is out and everything is bright and hopeful.");
 		}
-	} else if (req.body.Body.includes("HAHA")){
+	} else if (lowerCaseBody.includes("haha")){
 		if (responseType == 0){
 			twiml.message("What happened when the strawberry attempted to cross the road??\n\nThere was a traffic jam! :)");
 		} else{
-			twiml.message("Meme incoming!!! https://www.memesmonkey.com/images/memesmonkey/fc/fc30eca6199ffc303b722dde7d797df2.jpeg");
-		}
+
+            send_image("Otter this world!", "https://www.memesmonkey.com/images/memesmonkey/fc/fc30eca6199ffc303b722dde7d797df2.jpeg")
+            res.writeHead(200,{'Content-Type':'text/xml'});
+            res.end(twiml.toString());
+            return
+        }
 	} else if (req.body.Body.includes("INFO")){
 		twiml.message("Please visit https://devpost.com/software/happy-thoughts-acqv95 for more info");
 	} else if (req.body.Body.includes("kill") || req.body.Body.includes("suicide") || req.body.Body.includes("jump") || req.body.Body.includes("end")){
