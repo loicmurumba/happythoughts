@@ -47,7 +47,7 @@ app.post('/sms',(req, res) => {
 
     let wordInBody = (trigger) => {req.body.Body.includes(trigger)};
 
-	if (triggers.some(wordInBody)){ 
+	if (triggers.some(wordInBody) || req.body.Body.includes("Hi")){ 
     twiml.message('Hey! :)\n\nText WOO for motivation\n\nText ZZZ for sleep\nText RLF for relief\nText HAHA for memes\n\nText INFO for more info\n\nThink Happy Thoughts :)');
 	} else if (req.body.Body.includes("WOO") || req.body.Body.includes("Woo") || req.body.Body.includes("woo")){
 		if (responseType == 0){
@@ -78,7 +78,7 @@ app.post('/sms',(req, res) => {
             res.end(twiml.toString());
             return
         }
-	} else if (req.body.Body.includes("INFO")){
+	} else if (req.body.Body.includes("more")){
 		twiml.message("Please visit https://devpost.com/software/happy-thoughts-acqv95 for more info");
 	} else if (req.body.Body.includes("kill") || req.body.Body.includes("suicide") || req.body.Body.includes("jump") || req.body.Body.includes("end")){
 		twiml.message("Crisis Services Canada\nCALL: 1-(833)-456-4566\nTEXT: 'Start' to 45645\n\nUS National Suicide & Crisis Hotline\nCALL: 1-800-273-TALK (8255)\nTEXT: 'Hello' to 741741");
