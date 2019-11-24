@@ -1,56 +1,9 @@
 import React from "react";
 import logo from "./logo.png";
-import { Button } from "@material-ui/core";
-import { MuiPickersUtilsProvider, KeyboardTimePicker } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
 import "./App.css";
-import TimeSliders from "./TimeSliders";
-import CountSlider from "./CountSlider";
+import Form from "./Form.js";
 
 function App() {
-  const [selectedDate, setSelectedDate] = React.useState(Date.now());
-
-  let morningUpdateState = false;
-
-  const tokens = require("./tokens.json");
-  const firebaseConfig = {
-    apiKey: tokens.fbasekey,
-    authDomain: "happythoughts.firebaseapp.com",
-    databaseURL: "https://happythoughts.firebaseio.com",
-    projectId: "happythoughts",
-    storageBucket: "happythoughts.appspot.com",
-    messagingSenderId: "49951684871",
-    appId: "1:49951684871:web:6a775f7666dac586deeda2",
-    measurementId: "G-MED6KQVRYE"
-  };
-  var firebase = require("firebase/app");
-  firebase.initializeApp(firebaseConfig);
-  require("firebase/database");
-
-  const handleDateChange = date => {
-    setSelectedDate(date);
-  };
-
-  const morningUpdate = () => {
-    console.log(document.getElementById("customSwitch1").checked);
-    morningUpdateState = document.getElementById("customSwitch1").checked;
-  };
-
-  const onClick = () => {
-    console.log("submit");
-    firebase
-      .database()
-      .ref("/")
-      .set({
-        type: "name",
-        morning: "emailduple",
-        sleep: "imageUrl",
-        memes: "freq"
-      });
-
-    //send 2 firebase.
-  };
-
   return (
     <div>
       <nav class="navbar navbar-expand-md navbar-light">
@@ -85,45 +38,7 @@ function App() {
         </div>
       </nav>
       <div className="App-body">
-        <div class="row">
-          <div class="col-md-10">
-            <p className="header">Send Me</p>
-          </div>
-        </div>
-        <div class="picker radio-buttons">
-          <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="inlineRadio1"
-              value="option1"
-            />
-            <label class="form-check-label" for="inlineRadio1">
-              Links
-            </label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              id="inlineRadio2"
-              value="option2"
-            />
-            <label class="form-check-label" for="inlineRadio2">
-              Text
-            </label>
-          </div>
-        </div>
-        <TimeSliders name="Morning Motivation" lid="slide1" />
-        <TimeSliders name="Sleep Reminders" lid="slide2" />
-        <CountSlider name="Occasional Memes" lid="count1" />
-        <div className="submit">
-          <Button variant="contained" color="primary" onClick={onClick}>
-            Submit
-          </Button>
-        </div>
+        <Form />
       </div>
     </div>
   );
