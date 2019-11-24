@@ -37,8 +37,10 @@ function App() {
           <span class="navbar-text">Signed in as Lauren</span>
         </div>
       </nav>
-      <div className="App-body">
-        <Form />
+      <div className="App-background">
+        <div className="App-body">
+          <Form />
+        </div>
       </div>
     </div>
   );

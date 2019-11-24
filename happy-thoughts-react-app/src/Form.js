@@ -113,7 +113,17 @@ class Form extends React.Component {
         <TimeSliders name="Sleep Reminders" lid="slide2" cid="time2" />
         <CountSlider name="Occasional Memes" lid="count1" cid="countId1" />
         <div className="submit">
-          <Button type="submit" variant="contained" color="primary" onClick={this.handleSubmit}>
+          <Button
+            style={{
+              backgroundColor: "#7130A1",
+              fontSize: "18px",
+              marginBottom: "24px"
+            }}
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={this.handleSubmit}
+          >
             Save Settings
           </Button>
         </div>
