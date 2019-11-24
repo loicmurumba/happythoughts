@@ -17,6 +17,15 @@
 }
 
 .App-body {
-  margin-left: 125px;
-  margin-right: 125px;
+  margin-left: 124px;
+  margin-right: 124px;
+}
+
+.header {
+  font-size: 24px;
+  margin-bottom: 0px;
+}
+
+.picker {
+  padding-left: 24px;
 }

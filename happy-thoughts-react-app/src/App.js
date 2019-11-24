@@ -1,8 +1,20 @@
 import React from "react";
 import logo from "./logo.png";
+import { Button } from "@material-ui/core";
+import { MuiPickersUtilsProvider, KeyboardTimePicker } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 import "./App.css";
 
 function App() {
+  const [selectedDate, setSelectedDate] = React.useState(new Date("2014-08-18T21:11:54"));
+  const handleDateChange = date => {
+    setSelectedDate(date);
+  };
+
+  const onClick = () => {
+    console.log("submit");
+  };
+
   return (
     <div>
       <nav class="navbar navbar-expand-md navbar-light">
@@ -37,9 +49,34 @@ function App() {
         </div>
       </nav>
       <div className="App-body">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div class="row">
+          <div class="col-md-10">
+            <p className="header">Morning Motivation</p>
+          </div>
+          <div class="col-md-2">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="customSwitch1" onInput="" />
+              <label class="custom-control-label" for="customSwitch1" />
+            </div>
+          </div>
+        </div>
+        <div class="picker">
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardTimePicker
+              margin="normal"
+              id="time-picker"
+              label="Select a time"
+              value={selectedDate}
+              onChange={handleDateChange}
+              KeyboardButtonProps={{
+                "aria-label": "change time"
+              }}
+            />
+          </MuiPickersUtilsProvider>
+        </div>
+        <Button variant="contained" color="primary" onClick={onClick}>
+          Submit
+        </Button>
       </div>
     </div>
   );
