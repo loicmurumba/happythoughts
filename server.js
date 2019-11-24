@@ -1,5 +1,9 @@
 const express = require('express');
-const app = express();
+var bodyParser = require('body-parser');
+var app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
 const port = process.env.PORT || 8080; 
 
 const TOKEN_PATH = "./tokens.json";
