@@ -17,10 +17,10 @@ class CountSlider extends React.Component {
       <div>
         <div>
           <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-11">
               <p className="header">{this.props.name}</p>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
               <div class="custom-control custom-switch">
                 <input
                   type="checkbox"

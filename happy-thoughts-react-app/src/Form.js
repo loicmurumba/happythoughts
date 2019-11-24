@@ -75,7 +75,7 @@ class Form extends React.Component {
     return (
       <div>
         <div class="row">
-          <div class="col-md-10">
+          <div class="col-md-11">
             <p className="header">Send Me</p>
           </div>
         </div>
